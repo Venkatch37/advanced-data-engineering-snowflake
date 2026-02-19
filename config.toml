@@ -6,5 +6,6 @@ default_connection_name = "advanced_data_engineering_snowflake"
 [connections.advanced_data_engineering_snowflake]
 account="${SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_ACCOUNT}"
 user="${SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_USER}"
-private_key="${SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_PRIVATE_KEY}"
+private_key_path="rsa_key.p8"
+password="${SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_PASSWORD}"
 authenticator="SNOWFLAKE_JWT"
