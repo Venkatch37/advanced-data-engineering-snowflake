@@ -48,8 +48,11 @@ jobs:
         run: |
           echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > $GITHUB_WORKSPACE/rsa_key.p8
           chmod 600 $GITHUB_WORKSPACE/rsa_key.p8
-          echo "Key file created at:"
+          echo "---- LIST WORKSPACE ----"
           ls -al $GITHUB_WORKSPACE
+          echo "---- SHOW FILE SIZE ----"
+          wc -c $GITHUB_WORKSPACE/rsa_key.p8 || echo "File not found"
+
       - name: Debug workspace files
         run: |
           echo "Current directory:"
