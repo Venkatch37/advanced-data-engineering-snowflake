@@ -21,7 +21,6 @@ jobs:
       # Read connection secret
       SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
       SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-      SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
       SNOWFLAKE_CONNECTIONS_ADVANCED_DATA_ENGINEERING_SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
     steps:
@@ -45,7 +44,10 @@ jobs:
             echo "Unexpected branch: $TARGET_BRANCH"
             exit 1
           fi
-
+      - name: Write private key to file
+        run: |
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > rsa_key.p8
+          chmod 600 rsa_key.p8
       # Install Snowflake CLI GitHub Action and point to config file
       - name: Install SnowflakeCLI
         uses: snowflakedb/snowflake-cli-action@v1.5
