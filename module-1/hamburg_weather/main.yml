@@ -50,7 +50,14 @@ jobs:
           chmod 600 $GITHUB_WORKSPACE/rsa_key.p8
           echo "Key file created at:"
           ls -al $GITHUB_WORKSPACE
-
+      - name: Debug workspace files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Workspace path:"
+          echo $GITHUB_WORKSPACE
+          echo "Files in workspace:"
+          ls -al $GITHUB_WORKSPACE
       # Install Snowflake CLI GitHub Action and point to config file
       - name: Install SnowflakeCLI
         uses: snowflakedb/snowflake-cli-action@v1.5
